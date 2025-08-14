@@ -9,12 +9,21 @@ function App() {
       .then(res => res.json())
       .then(data => setUsers(data));
   }, [])
+  const handleAddUser = (e) => {
+    e.preventDefault();
+    // const form = e.target;
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const user = { name, email };
+    console.log(user);
+
+  }
   return (
     <>
       <div>
         <h1>Users Management System</h1>
         <h3>Numbers of users : {users.length}</h3>
-        <form>
+        <form onSubmit={handleAddUser}>
           <input type="text" name="name" id="" />
           <br />
           <input type="email" name="email" id="" />
