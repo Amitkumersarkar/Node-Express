@@ -16,7 +16,17 @@ function App() {
     const email = e.target.email.value;
     const user = { name, email };
     console.log(user);
-
+    fetch('http://localhost:3500/users', {
+      method: 'POST',
+      headers: {
+        ' content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('inside post response', data);
+      })
   }
   return (
     <>
